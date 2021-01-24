@@ -5,7 +5,7 @@ type User {
   email: String!
   lastName: String
   createdAt: String!
-  updatesAt: String!
+  updatedAt: String!
 }
 
 input CreateUserInput {

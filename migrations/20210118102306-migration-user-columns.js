@@ -6,7 +6,7 @@ module.exports = {
       return Promise.all([
         queryInterface.addColumn(
           'users',
-          'createdAt',
+          'created_at',
           {
             allowNull: false,
             type: Sequelize.DATE,
@@ -16,7 +16,7 @@ module.exports = {
         ),
         queryInterface.addColumn(
           'users',
-          'updatedAt',
+          'updated_at',
           {
             allowNull: false,
             type: Sequelize.DATE,

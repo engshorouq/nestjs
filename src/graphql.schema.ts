@@ -26,7 +26,7 @@ export class User {
     email: string;
     lastName?: string;
     createdAt: string;
-    updatesAt: string;
+    updatedAt: string;
 }
 
 export abstract class IQuery {

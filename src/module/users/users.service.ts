@@ -10,10 +10,8 @@ export class UsersService {
   constructor(
     @Inject('USERS_REPOSITORY') private userRepository: typeof UserModel,
   ) {}
-  async create(createUserInput: CreateUserInput) {
-    console.log(createUserInput);
-    console.log(await this.userRepository.create(createUserInput));
-    return {};
+  create(createUserInput: CreateUserInput) {
+    return this.userRepository.create(createUserInput);
   }
 
   findAll() {
