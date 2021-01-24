@@ -4,18 +4,18 @@ export class UserModel extends Model {
   @Column
   email: string;
 
-  @Column({ field: 'first_name' })
+  @Column
   firstName: string;
 
-  @Column({ field: 'last_name' })
+  @Column
   lastName: string;
 
   @Column
   password: string;
 
-  @Column({ field: 'created_at' })
+  @Column
   createdAt: Date;
 
-  @Column({ field: 'updated_at' })
+  @Column
   updatedAt: Date;
 }
