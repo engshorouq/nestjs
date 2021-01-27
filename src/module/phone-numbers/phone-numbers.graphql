@@ -1,0 +1,30 @@
+type PhoneNumber  implements Node{
+  id: ID!
+  user: User
+  phoneNumber: String
+  code: String
+}
+
+input CreatePhoneNumberInput {
+  # Example field (placeholder)
+  userId: ID!
+  code: String!
+  phoneNumber: String!
+}
+
+input UpdatePhoneNumberInput {
+  id: Int!
+  code: String
+  phoneNumber: String
+}
+
+extend type Query {
+  phoneNumbers: [PhoneNumber]!
+  phoneNumber(id: Int!): PhoneNumber
+}
+
+extend type Mutation {
+  createPhoneNumber(test: String): PhoneNumber!
+  updatePhoneNumber(id: ID!, updatePhoneNumberInput: UpdatePhoneNumberInput!): PhoneNumber!
+  removePhoneNumber(id: ID!): PhoneNumber
+}
