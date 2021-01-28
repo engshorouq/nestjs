@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { UserModel } from '../users/entities/user.entity';
+import { PhoneNumber } from '../phone-numbers/entities/phone-number.entity';
 
 export const databaseProviders = [
   {
@@ -17,7 +18,7 @@ export const databaseProviders = [
           timestamps: false,
         },
       });
-      sequelize.addModels([UserModel]);
+      sequelize.addModels([UserModel, PhoneNumber]);
       // await sequelize.sync();
       return sequelize;
     },
