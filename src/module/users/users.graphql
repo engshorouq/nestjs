@@ -1,8 +1,9 @@
-type User {
+type User implements Node {
   # Example field (placeholder)
-  id: Int!
+  id: ID!
   firstName: String!
   email: String!
+  phones(code: String):[PhoneNumber!]
   lastName: String
   createdAt: String!
   updatedAt: String!
@@ -17,19 +18,19 @@ input CreateUserInput {
 }
 
 input UpdateUserInput {
-  id: Int!
+  id: ID!
   firstName: String
   email: String
   lastName: String
 }
 
-type Query {
+extend type Query {
   users: [User]!
-  user(id: Int!): User
+  user(id: ID!): User
 }
 
-type Mutation {
+extend type Mutation {
   userCreate(createUserInput: CreateUserInput!): User!
   userUpdate(updateUserInput: UpdateUserInput!): User!
-  userRemove(id: Int!): User
+  userRemove(id: ID!): User
 }

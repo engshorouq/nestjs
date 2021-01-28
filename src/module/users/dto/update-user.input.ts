@@ -4,7 +4,7 @@ import { UpdateUserInput as UpdateUserInputInterface } from '../../../graphql.sc
 import { IsEmail, IsString } from 'class-validator';
 
 export class UpdateUserInput extends UpdateUserInputInterface {
-  id: number;
+  id: string;
   @IsEmail({}, { message: 'this is not email' })
   email?: string;
 

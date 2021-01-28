@@ -6,6 +6,18 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export class CreatePhoneNumberInput {
+    userId: string;
+    code: string;
+    phoneNumber: string;
+}
+
+export class UpdatePhoneNumberInput {
+    id: number;
+    code?: string;
+    phoneNumber?: string;
+}
+
 export class CreateUserInput {
     firstName: string;
     email: string;
@@ -14,31 +26,53 @@ export class CreateUserInput {
 }
 
 export class UpdateUserInput {
-    id: number;
+    id: string;
     firstName?: string;
     email?: string;
     lastName?: string;
 }
 
-export class User {
-    id: number;
-    firstName: string;
-    email: string;
-    lastName?: string;
-    createdAt: string;
-    updatedAt: string;
+export interface Node {
+    id: string;
 }
 
 export abstract class IQuery {
+    abstract phoneNumbers(): PhoneNumber[] | Promise<PhoneNumber[]>;
+
+    abstract phoneNumber(id: number): PhoneNumber | Promise<PhoneNumber>;
+
     abstract users(): User[] | Promise<User[]>;
 
-    abstract user(id: number): User | Promise<User>;
+    abstract user(id: string): User | Promise<User>;
 }
 
 export abstract class IMutation {
+    abstract createPhoneNumber(createPhoneNumberInput: CreatePhoneNumberInput): PhoneNumber | Promise<PhoneNumber>;
+
+    abstract updatePhoneNumber(id: string, updatePhoneNumberInput: UpdatePhoneNumberInput): PhoneNumber | Promise<PhoneNumber>;
+
+    abstract removePhoneNumber(id: number): PhoneNumber | Promise<PhoneNumber>;
+
     abstract userCreate(createUserInput: CreateUserInput): User | Promise<User>;
 
     abstract userUpdate(updateUserInput: UpdateUserInput): User | Promise<User>;
 
-    abstract userRemove(id: number): User | Promise<User>;
+    abstract userRemove(id: string): User | Promise<User>;
+}
+
+export class PhoneNumber implements Node {
+    id: string;
+    user?: User;
+    phoneNumber?: string;
+    code?: string;
+}
+
+export class User implements Node {
+    id: string;
+    firstName: string;
+    email: string;
+    phones?: PhoneNumber[];
+    lastName?: string;
+    createdAt: string;
+    updatedAt: string;
 }
